@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GERKA - Fischer ürünleri. Dübel, vida ve montaj sistemleri.">
+  <title>Fischer Ürünleri | GERKA</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-logo"><img src="img/gerka_logo.png" alt="Gerka Logo"></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Anasayfa</a></li>
+        <li><a href="index.html#hakkimizda">Hakkımızda</a></li>
+        <li><a href="markalar.html">Markalar</a></li>
+        <li>
+          <a href="#" class="active">Ürünler <i class="fas fa-chevron-down" style="font-size:0.7rem;margin-left:4px"></i></a>
+          <div class="dropdown-menu">
+            <a href="fischer.html" class="active"><i class="fas fa-anchor"></i> Fischer Ürünleri</a>
+            <a href="bosch.html"><i class="fas fa-tools"></i> Bosch Ürünleri</a>
+          </div>
+        </li>
+        <li><a href="index.html#iletisim">İletişim</a></li>
+      </ul>
+      <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>Fischer <span>Ürünleri</span></h1>
+      <p>Dünyaca ünlü Fischer marka montaj ve sabitleme sistemleri</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="brands-grid" style="max-width:900px;margin:0 auto;">
+        <div class="product-card fade-in">
+          <div style="height:220px;background:var(--dark-4);display:flex;align-items:center;justify-content:center;padding:30px;">
+            <img src="img/markalar/Fischer.png" alt="Fischer Dübel" style="max-height:160px;object-fit:contain;">
+          </div>
+          <div class="product-card-body">
+            <h3>Fischer UX Dübel Seti</h3>
+            <p>Evrensel naylon dübel, beton, tuğla, alçıpan ve birçok yapı malzemesinde güvenli sabitleme sağlar. Farklı boyut seçenekleriyle her ihtiyaca uygun çözüm.</p>
+            <a href="https://wa.me/905318853319?text=Fischer%20UX%20Dübel%20Seti%20hakkında%20bilgi%20almak%20istiyorum" target="_blank" class="btn-primary" style="font-size:0.85rem;padding:10px 24px;margin-top:16px;">
+              <i class="fab fa-whatsapp"></i> Bilgi Al
+            </a>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:60px;" class="fade-in">
+        <p style="color:var(--text-muted);font-size:1.05rem;margin-bottom:16px;">Daha fazla ürün yakında eklenecektir.</p>
+        <a href="index.html#iletisim" class="btn-primary"><i class="fas fa-phone"></i> İletişime Geçin</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container"><div class="footer-bottom"><p>&copy; 2025 GERKA. Tüm hakları saklıdır.</p></div></div>
+  </footer>
+  <a href="https://wa.me/905318853319" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i></a>
+  <button class="scroll-top" id="scrollTop"><i class="fas fa-chevron-up"></i></button>
+  <script>
+    const menuToggle=document.getElementById('menuToggle'),navLinks=document.getElementById('navLinks');
+    menuToggle.addEventListener('click',()=>{menuToggle.classList.toggle('active');navLinks.classList.toggle('active');});
+    navLinks.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>{menuToggle.classList.remove('active');navLinks.classList.remove('active');}));
+    const scrollTopBtn=document.getElementById('scrollTop');
+    window.addEventListener('scroll',()=>scrollTopBtn.classList.toggle('visible',window.scrollY>400));
+    scrollTopBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+    const observer=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:0.1});
+    document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>

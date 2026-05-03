@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GERKA - Çalıştığımız markalar. Fischer, Bosch, Hilti, Makita, DeWalt ve daha fazlası.">
+  <title>Markalar | GERKA</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-logo">
+        <img src="img/gerka_logo.png" alt="Gerka Logo">
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Anasayfa</a></li>
+        <li><a href="index.html#hakkimizda">Hakkımızda</a></li>
+        <li><a href="markalar.html" class="active">Markalar</a></li>
+        <li>
+          <a href="#">Ürünler <i class="fas fa-chevron-down" style="font-size:0.7rem;margin-left:4px"></i></a>
+          <div class="dropdown-menu">
+            <a href="fischer.html"><i class="fas fa-anchor"></i> Fischer Ürünleri</a>
+            <a href="bosch.html"><i class="fas fa-tools"></i> Bosch Ürünleri</a>
+          </div>
+        </li>
+        <li><a href="index.html#iletisim">İletişim</a></li>
+      </ul>
+      <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Çalıştığımız <span>Markalar</span></h1>
+      <p>Bizlerden ürün tedarik edebileceğiniz markalar</p>
+    </div>
+  </section>
+
+  <!-- BRANDS GRID -->
+  <section class="section">
+    <div class="container">
+      <div class="brands-grid">
+        <div class="brand-grid-item fade-in"><img src="img/markalar/Fischer.png" alt="Fischer"><p>Fischer</p></div>
+        <div class="brand-grid-item fade-in"><img src="img/markalar/bosch.png" alt="Bosch"><p>Bosch</p></div>
+        <div class="brand-grid-item fade-in"><img src="img/markalar/Hıltı.png" alt="Hilti"><p>Hilti</p></div>
+        <div class="brand-grid-item fade-in"><img src="img/markalar/Makita.png" alt="Makita"><p>Makita</p></div>
+        <div class="brand-grid-item fade-in"><img src="img/markalar/Dewalt.png" alt="DeWalt"><p>DeWalt</p></div>
+        <div class="brand-grid-item fade-in"><img src="img/markalar/Milwaukee.png" alt="Milwaukee"><p>Milwaukee</p></div>
+        <div class="brand-grid-item fade-in"><img src="img/markalar/Stanley.png" alt="Stanley"><p>Stanley</p></div>
+        <div class="brand-grid-item fade-in"><img src="img/markalar/3M.png" alt="3M"><p>3M</p></div>
+        <div class="brand-grid-item fade-in"><img src="img/markalar/Sika.png" alt="Sika"><p>Sika</p></div>
+        <div class="brand-grid-item fade-in"><img src="img/markalar/Magmaweld.png" alt="Magmaweld"><p>Magmaweld</p></div>
+        <div class="brand-grid-item fade-in"><img src="img/markalar/Izeltas.png" alt="İzeltaş"><p>İzeltaş</p></div>
+        <div class="brand-grid-item fade-in"><img src="img/markalar/karbosan.png" alt="Karbosan"><p>Karbosan</p></div>
+        <div class="brand-grid-item fade-in"><img src="img/markalar/akçalı.png" alt="Akçalı"><p>Akçalı</p></div>
+        <div class="brand-grid-item fade-in"><img src="img/markalar/beybi.png" alt="Beybi"><p>Beybi</p></div>
+        <div class="brand-grid-item fade-in"><img src="img/markalar/askaynak.jpg" alt="Askaynak"><p>Askaynak</p></div>
+        <div class="brand-grid-item fade-in"><img src="img/markalar/geka.png" alt="Geka"><p>Geka</p></div>
+        <div class="brand-grid-item fade-in"><img src="img/markalar/Unı-t.png" alt="Uni-T"><p>Uni-T</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2025 GERKA. Tüm hakları saklıdır.</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/905318853319" target="_blank" class="whatsapp-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <button class="scroll-top" id="scrollTop"><i class="fas fa-chevron-up"></i></button>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => { menuToggle.classList.toggle('active'); navLinks.classList.toggle('active'); });
+    navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => { menuToggle.classList.remove('active'); navLinks.classList.remove('active'); }));
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => scrollTopBtn.classList.toggle('visible', window.scrollY > 400));
+    scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    const observer = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
