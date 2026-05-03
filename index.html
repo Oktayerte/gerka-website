@@ -99,6 +99,12 @@
         </div>
       </div>
 
+      <!-- TANITIM METNİ -->
+      <div class="fade-in" style="margin-top:40px; margin-bottom:30px; text-align:center; max-width:900px; margin-left:auto; margin-right:auto;">
+        <p style="color:var(--text-muted); font-size:1.05rem; line-height:1.8;">2008 yılında İstanbul'da kurulan firmamız, inşaat, endüstri yapı ve imalat sektörlerinin önde gelen tedarik partnerlerinden biri olarak faaliyet göstermektedir. 1999 yılından itibaren biriktirdiğimiz değerli tecrübelerle sektöre adım attık. Her geçen gün sektördeki gelişmeleri yakından takip ediyor, müşterilerimize daha iyi hizmet sunabilmek adına sürekli olarak kendimizi geliştiriyoruz.</p>
+        <p style="color:var(--text-muted); font-size:1.05rem; line-height:1.8; margin-top:16px;">Firmamızın temel prensibi, kaliteli hizmeti zamanında sunmaktır. Bu prensip doğrultusunda, inşaat, endüstri yapı ve imalat sektörlerinde lider bir konuma ulaşmayı hedefliyoruz.</p>
+      </div>
+
       <!-- MİSYON VİZYON -->
       <div class="mv-grid">
         <div class="mv-card fade-in">
@@ -280,10 +286,30 @@
     </div>
   </footer>
 
-  <!-- WhatsApp Button -->
-  <a href="https://wa.me/905318853319" target="_blank" class="whatsapp-btn" title="WhatsApp ile İletişim">
+  <!-- WhatsApp Chat Widget -->
+  <div class="wa-chat-popup" id="waChatPopup">
+    <div class="wa-chat-header">
+      <img src="img/gerka_logo.png" alt="Gerka" class="wa-avatar">
+      <div class="wa-chat-header-info">
+        <h4>Gerka Bağlantı Sistemleri</h4>
+        <p>Genellikle hızlı yanıt verir</p>
+      </div>
+      <button class="wa-chat-close" id="waChatClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="wa-chat-body">
+      <div class="wa-chat-bubble">
+        Merhaba! 👋 Gerka Bağlantı Sistemleri'ne hoş geldiniz. Size nasıl yardımcı olabiliriz?
+        <span class="wa-chat-time">Şimdi</span>
+      </div>
+    </div>
+    <div class="wa-chat-footer">
+      <input type="text" class="wa-chat-input" id="waChatInput" placeholder="Mesajınızı yazın...">
+      <button class="wa-chat-send" id="waChatSend"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+  <button class="whatsapp-btn" id="waToggle" title="WhatsApp ile İletişim">
     <i class="fab fa-whatsapp"></i>
-  </a>
+  </button>
 
   <!-- Scroll Top -->
   <button class="scroll-top" id="scrollTop" title="Yukarı Çık">
@@ -346,6 +372,32 @@
       });
     }, { threshold: 0.1 });
     fadeEls.forEach(el => observer.observe(el));
+
+    // WhatsApp Chat Widget
+    const waToggle = document.getElementById('waToggle');
+    const waChatPopup = document.getElementById('waChatPopup');
+    const waChatClose = document.getElementById('waChatClose');
+    const waChatInput = document.getElementById('waChatInput');
+    const waChatSend = document.getElementById('waChatSend');
+
+    waToggle.addEventListener('click', () => {
+      waChatPopup.classList.toggle('active');
+    });
+    waChatClose.addEventListener('click', () => {
+      waChatPopup.classList.remove('active');
+    });
+
+    function sendWhatsApp() {
+      const msg = waChatInput.value.trim();
+      const url = msg
+        ? `https://wa.me/905318853319?text=${encodeURIComponent(msg)}`
+        : 'https://wa.me/905318853319';
+      window.open(url, '_blank');
+    }
+    waChatSend.addEventListener('click', sendWhatsApp);
+    waChatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendWhatsApp();
+    });
   </script>
 </body>
 </html>
