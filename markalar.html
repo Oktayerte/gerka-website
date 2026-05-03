@@ -74,7 +74,30 @@
     </div>
   </footer>
 
-  <a href="https://wa.me/905318853319" target="_blank" class="whatsapp-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <!-- WhatsApp Chat Widget -->
+  <div class="wa-chat-popup" id="waChatPopup">
+    <div class="wa-chat-header">
+      <img src="img/gerka_logo.png" alt="Gerka" class="wa-avatar">
+      <div class="wa-chat-header-info">
+        <h4>Gerka Bağlantı Sistemleri</h4>
+        <p>Genellikle hızlı yanıt verir</p>
+      </div>
+      <button class="wa-chat-close" id="waChatClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="wa-chat-body">
+      <div class="wa-chat-bubble">
+        Merhaba! 👋 Gerka Bağlantı Sistemleri'ne hoş geldiniz. Size nasıl yardımcı olabiliriz?
+        <span class="wa-chat-time">Şimdi</span>
+      </div>
+    </div>
+    <div class="wa-chat-footer">
+      <input type="text" class="wa-chat-input" id="waChatInput" placeholder="Mesajınızı yazın...">
+      <button class="wa-chat-send" id="waChatSend"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+  <button class="whatsapp-btn" id="waToggle" title="WhatsApp ile İletişim">
+    <i class="fab fa-whatsapp"></i>
+  </button>
   <button class="scroll-top" id="scrollTop"><i class="fas fa-chevron-up"></i></button>
 
   <script>
@@ -87,6 +110,32 @@
     scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     const observer = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // WhatsApp Chat Widget
+    const waToggle = document.getElementById('waToggle');
+    const waChatPopup = document.getElementById('waChatPopup');
+    const waChatClose = document.getElementById('waChatClose');
+    const waChatInput = document.getElementById('waChatInput');
+    const waChatSend = document.getElementById('waChatSend');
+
+    waToggle.addEventListener('click', () => {
+      waChatPopup.classList.toggle('active');
+    });
+    waChatClose.addEventListener('click', () => {
+      waChatPopup.classList.remove('active');
+    });
+
+    function sendWhatsApp() {
+      const msg = waChatInput.value.trim();
+      const url = msg
+        ? `https://wa.me/905318853319?text=${encodeURIComponent(msg)}`
+        : 'https://wa.me/905318853319';
+      window.open(url, '_blank');
+    }
+    waChatSend.addEventListener('click', sendWhatsApp);
+    waChatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendWhatsApp();
+    });
   </script>
 </body>
 </html>
