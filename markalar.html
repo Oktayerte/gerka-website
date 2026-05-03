@@ -5,10 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="GERKA - Çalıştığımız markalar. Fischer, Bosch, Hilti, Makita, DeWalt ve daha fazlası.">
   <title>Markalar | GERKA</title>
+  <link rel="icon" href="img/gerka_logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="img/gerka_logo.png">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>
+    if (history.scrollRestoration) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  </script>
 </head>
 <body>
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-content">
+      <img src="img/gerka_logo.png" alt="Gerka Logo" class="preloader-logo">
+      <div class="preloader-text">Yükleniyor...</div>
+    </div>
+  </div>
+
   <!-- NAVBAR -->
   <nav class="navbar scrolled" id="navbar">
     <div class="container">
@@ -110,6 +126,17 @@
     scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     const observer = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Preloader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+          preloader.classList.add('hidden');
+          setTimeout(() => preloader.style.display = 'none', 500);
+        }
+      }, 2000);
+    });
 
     // WhatsApp Chat Widget
     const waToggle = document.getElementById('waToggle');

@@ -6,10 +6,26 @@
   <meta name="description" content="GERKA - İnşaat ve sanayi sektöründe güvenilir tedarik ve güçlü çözümler. Fischer, Bosch, Hilti ve daha fazla markanın yetkili distribütörü.">
   <meta name="keywords" content="Gerka, inşaat malzemeleri, Fischer, Bosch, endüstriyel ürünler, toptan ticaret, İstanbul">
   <title>GERKA | Güvenilir Tedarik, Güçlü Çözümler</title>
+  <link rel="icon" href="img/gerka_logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="img/gerka_logo.png">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>
+    if (history.scrollRestoration) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  </script>
 </head>
 <body>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-content">
+      <img src="img/gerka_logo.png" alt="Gerka Logo" class="preloader-logo">
+      <div class="preloader-text">Yükleniyor...</div>
+    </div>
+  </div>
 
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
@@ -99,11 +115,6 @@
         </div>
       </div>
 
-      <!-- TANITIM METNİ -->
-      <div class="fade-in" style="margin-top:40px; margin-bottom:30px; text-align:center; max-width:900px; margin-left:auto; margin-right:auto;">
-        <p style="color:var(--text-muted); font-size:1.05rem; line-height:1.8;">2008 yılında İstanbul'da kurulan firmamız, inşaat, endüstri yapı ve imalat sektörlerinin önde gelen tedarik partnerlerinden biri olarak faaliyet göstermektedir. 1999 yılından itibaren biriktirdiğimiz değerli tecrübelerle sektöre adım attık. Her geçen gün sektördeki gelişmeleri yakından takip ediyor, müşterilerimize daha iyi hizmet sunabilmek adına sürekli olarak kendimizi geliştiriyoruz.</p>
-        <p style="color:var(--text-muted); font-size:1.05rem; line-height:1.8; margin-top:16px;">Firmamızın temel prensibi, kaliteli hizmeti zamanında sunmaktır. Bu prensip doğrultusunda, inşaat, endüstri yapı ve imalat sektörlerinde lider bir konuma ulaşmayı hedefliyoruz.</p>
-      </div>
 
       <!-- MİSYON VİZYON -->
       <div class="mv-grid">
@@ -372,6 +383,17 @@
       });
     }, { threshold: 0.1 });
     fadeEls.forEach(el => observer.observe(el));
+
+    // Preloader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+          preloader.classList.add('hidden');
+          setTimeout(() => preloader.style.display = 'none', 500);
+        }
+      }, 2000);
+    });
 
     // WhatsApp Chat Widget
     const waToggle = document.getElementById('waToggle');
