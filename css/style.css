@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap');
 
 :root {
-  --primary: #d4a634;
-  --primary-light: #e8c560;
-  --primary-dark: #b8901c;
+  --primary: #e67e22;
+  --primary-light: #f39c12;
+  --primary-dark: #d35400;
   --dark: #ffffff;
   --dark-2: #f8f9fa;
   --dark-3: #ffffff;
@@ -262,22 +262,32 @@ ul { list-style: none; }
 /* Contact */
 .contact-section { background: var(--dark-2); }
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-.contact-info { display: flex; flex-direction: column; gap: 24px; }
+.contact-info { display: flex; flex-direction: column; gap: 20px; }
 .contact-card {
   background: var(--dark-3); border: 1px solid var(--border);
   border-radius: var(--radius); padding: 24px; display: flex;
-  align-items: flex-start; gap: 16px; transition: var(--transition);
+  align-items: center; gap: 18px; transition: var(--transition);
 }
-.contact-card:hover { border-color: var(--primary); transform: translateX(5px); }
+.contact-card:hover { transform: translateX(5px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
 .contact-card .icon {
-  width: 50px; height: 50px; border-radius: 12px; flex-shrink: 0;
-  background: rgba(212,166,52,0.1); display: flex; align-items: center;
-  justify-content: center; font-size: 1.3rem; color: var(--primary);
+  width: 54px; height: 54px; border-radius: 14px; flex-shrink: 0;
+  display: flex; align-items: center;
+  justify-content: center; font-size: 1.4rem;
 }
-.contact-card h4 { font-size: 1rem; margin-bottom: 6px; }
+/* Individual icon colors */
+.contact-card:nth-child(1) .icon { background: rgba(52,152,219,0.1); color: #3498db; }
+.contact-card:nth-child(1):hover { border-color: #3498db; }
+.contact-card:nth-child(2) .icon { background: rgba(46,204,113,0.1); color: #2ecc71; }
+.contact-card:nth-child(2):hover { border-color: #2ecc71; }
+.contact-card:nth-child(3) .icon { background: rgba(37,211,102,0.1); color: #25D366; }
+.contact-card:nth-child(3):hover { border-color: #25D366; }
+.contact-card:nth-child(4) .icon { background: rgba(231,76,60,0.1); color: #e74c3c; }
+.contact-card:nth-child(4):hover { border-color: #e74c3c; }
+
+.contact-card h4 { font-size: 1rem; margin-bottom: 4px; }
 .contact-card p { color: var(--text-muted); font-size: 0.9rem; }
-.contact-card a { color: var(--primary); }
-.contact-card a:hover { color: var(--primary-light); }
+.contact-card a { color: var(--text); font-weight: 500; }
+.contact-card a:hover { color: var(--primary); }
 .contact-map { border-radius: var(--radius); overflow: hidden; min-height: 400px; }
 .contact-map iframe { width: 100%; height: 100%; border: none; filter: grayscale(0.2) brightness(0.95); }
 
