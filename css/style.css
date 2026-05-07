@@ -42,12 +42,12 @@ ul { list-style: none; }
 /* ===== NAVBAR ===== */
 .navbar {
   position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-  background: rgba(17, 17, 17, 0.95);
+  background: rgba(26, 26, 46, 0.95);
   backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
   transition: var(--transition);
 }
-.navbar.scrolled { background: rgba(17, 17, 17, 1); box-shadow: var(--shadow); }
+.navbar.scrolled { background: rgba(26, 26, 46, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
 .navbar .container {
   display: flex; align-items: center; justify-content: space-between;
   height: 80px;
@@ -440,13 +440,14 @@ ul { list-style: none; }
 .scroll-top {
   position: fixed; bottom: 30px; left: 30px; z-index: 999;
   width: 50px; height: 50px; border-radius: 50%;
-  background: var(--dark-4); border: 1px solid var(--border);
+  background: #1a1a2e; border: none;
   color: var(--primary); display: flex; align-items: center;
   justify-content: center; font-size: 1.2rem; cursor: pointer;
   transition: var(--transition); opacity: 0; visibility: hidden;
+  box-shadow: 0 4px 16px rgba(26,26,46,0.3);
 }
 .scroll-top.visible { opacity: 1; visibility: visible; }
-.scroll-top:hover { background: var(--primary); color: var(--dark); }
+.scroll-top:hover { background: var(--primary); color: #fff; box-shadow: 0 4px 20px rgba(230,126,34,0.4); }
 
 /* ===== PAGE HEADERS (Sub Pages) ===== */
 .page-header {
@@ -642,7 +643,7 @@ ul { list-style: none; }
   .menu-toggle { display: flex; }
   .nav-links {
     position: fixed; top: 0; right: -100%; width: 80%; height: 100vh;
-    background: rgba(17, 17, 17, 0.98); backdrop-filter: blur(20px);
+    background: rgba(26, 26, 46, 0.98); backdrop-filter: blur(20px);
     flex-direction: column; padding: 100px 30px 30px;
     transition: var(--transition); gap: 4px; align-items: flex-start;
     box-shadow: -10px 0 40px rgba(0,0,0,0.5);
