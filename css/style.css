@@ -323,19 +323,24 @@ ul { list-style: none; }
 
 /* Footer */
 .footer {
-  background: var(--dark-2); border-top: 1px solid var(--border);
-  padding: 60px 0 30px;
+  background: #1a1a2e; position: relative;
+  padding: 60px 0 30px; color: #fff;
+}
+.footer::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 100%;
+  height: 4px; background: linear-gradient(90deg, var(--primary), var(--primary-light), var(--primary-dark), var(--primary));
 }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-.footer-brand p { color: var(--text-muted); margin-top: 16px; font-size: 0.9rem; max-width: 300px; }
+.footer-brand p { color: rgba(255,255,255,0.6); margin-top: 16px; font-size: 0.9rem; max-width: 300px; }
 .footer-links h4, .footer-contact h4 { font-size: 1.1rem; margin-bottom: 16px; color: var(--primary); font-family: 'Inter', sans-serif; }
 .footer-links ul { display: flex; flex-direction: column; gap: 10px; }
-.footer-links a { color: var(--text-muted); font-size: 0.9rem; }
+.footer-links a { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
 .footer-links a:hover { color: var(--primary); padding-left: 5px; }
-.footer-contact p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 8px; }
+.footer-contact p { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 8px; }
+.footer-contact p i { color: var(--primary); margin-right: 6px; }
 .footer-bottom {
-  border-top: 1px solid var(--border); padding-top: 24px;
-  text-align: center; color: var(--text-muted); font-size: 0.85rem;
+  border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px;
+  text-align: center; color: rgba(255,255,255,0.4); font-size: 0.85rem;
 }
 
 /* WhatsApp Chat Widget */
