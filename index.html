@@ -24,8 +24,15 @@
     <div class="preloader-content">
       <img src="img/gerka_logo.png" alt="Gerka Logo" class="preloader-logo">
       <div class="preloader-text">Yükleniyor...</div>
+      <div class="preloader-spinner"></div>
     </div>
   </div>
+  <script>
+    if (sessionStorage.getItem('skipPreloader') === 'true') {
+      document.getElementById('preloader').style.display = 'none';
+      sessionStorage.removeItem('skipPreloader');
+    }
+  </script>
 
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
@@ -384,15 +391,56 @@
     }, { threshold: 0.1 });
     fadeEls.forEach(el => observer.observe(el));
 
-    // Preloader
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        const preloader = document.getElementById('preloader');
-        if (preloader) {
-          preloader.classList.add('hidden');
-          setTimeout(() => preloader.style.display = 'none', 500);
+    // ScrollSpy for Navbar
+    const sections = document.querySelectorAll('section[id], .hero[id]');
+    const navItems = document.querySelectorAll('.nav-links > li > a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      const scrollY = window.pageYOffset;
+      
+      sections.forEach(section => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 120; // offset for navbar
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
         }
-      }, 2000);
+      });
+
+      // Special case for top of page
+      if (scrollY < 200) current = 'hero';
+
+      navItems.forEach(a => {
+        a.classList.remove('active');
+        const href = a.getAttribute('href');
+        // If the section is hero, highlight the index.html link
+        if (href === '#' + current || (current === 'hero' && href === 'index.html')) {
+          a.classList.add('active');
+        }
+      });
+    });
+
+    // Preloader
+    if (document.getElementById('preloader').style.display !== 'none') {
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const preloader = document.getElementById('preloader');
+          if (preloader) {
+            preloader.classList.add('hidden');
+            setTimeout(() => preloader.style.display = 'none', 500);
+          }
+        }, 1500);
+      });
+    }
+
+    // Skip preloader on internal navigation
+    document.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        const href = link.getAttribute('href');
+        if (link.hostname === window.location.hostname && href && !href.startsWith('#') && !href.startsWith('tel:') && !href.startsWith('mailto:')) {
+          sessionStorage.setItem('skipPreloader', 'true');
+        }
+      });
     });
 
     // WhatsApp Chat Widget

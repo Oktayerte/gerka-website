@@ -22,8 +22,15 @@
     <div class="preloader-content">
       <img src="img/gerka_logo.png" alt="Gerka Logo" class="preloader-logo">
       <div class="preloader-text">Yükleniyor...</div>
+      <div class="preloader-spinner"></div>
     </div>
   </div>
+  <script>
+    if (sessionStorage.getItem('skipPreloader') === 'true') {
+      document.getElementById('preloader').style.display = 'none';
+      sessionStorage.removeItem('skipPreloader');
+    }
+  </script>
 
   <!-- NAVBAR -->
   <nav class="navbar scrolled" id="navbar">
@@ -128,14 +135,26 @@
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
     // Preloader
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        const preloader = document.getElementById('preloader');
-        if (preloader) {
-          preloader.classList.add('hidden');
-          setTimeout(() => preloader.style.display = 'none', 500);
+    if (document.getElementById('preloader').style.display !== 'none') {
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const preloader = document.getElementById('preloader');
+          if (preloader) {
+            preloader.classList.add('hidden');
+            setTimeout(() => preloader.style.display = 'none', 500);
+          }
+        }, 1500);
+      });
+    }
+
+    // Skip preloader on internal navigation
+    document.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        const href = link.getAttribute('href');
+        if (link.hostname === window.location.hostname && href && !href.startsWith('#') && !href.startsWith('tel:') && !href.startsWith('mailto:')) {
+          sessionStorage.setItem('skipPreloader', 'true');
         }
-      }, 2000);
+      });
     });
 
     // WhatsApp Chat Widget
