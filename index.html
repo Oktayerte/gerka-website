@@ -51,6 +51,7 @@
             <a href="bosch.html"><i class="fas fa-tools"></i> Bosch Ürünleri</a>
           </div>
         </li>
+        <li><a href="katalog.html">Katalog</a></li>
         <li><a href="#iletisim">İletişim</a></li>
       </ul>
       <div class="menu-toggle" id="menuToggle">
@@ -224,6 +225,61 @@
     </div>
   </section>
 
+  <!-- KATALOGLAR -->
+  <section class="section brands-section" id="kataloglar">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Ürün <span>Katalogları</span></h2>
+        <p>Güncel fiyat listeleri ve ürün kataloglarını inceleyin</p>
+        <div class="section-line"></div>
+      </div>
+      <div class="catalog-preview-grid">
+        <div class="catalog-preview-card fade-in">
+          <div class="catalog-preview-icon">
+            <i class="fas fa-file-pdf"></i>
+          </div>
+          <div class="catalog-preview-info">
+            <h4>2026 Bosch Fiyat Listesi</h4>
+            <p>Güncel Bosch profesyonel ürün fiyatları</p>
+            <div class="catalog-preview-actions">
+              <a href="katalog/2026 Bosch Fiyat Listesi.pdf" target="_blank" class="cpv"><i class="fas fa-eye"></i> İncele</a>
+              <a href="katalog/2026 Bosch Fiyat Listesi.pdf" download class="cpd"><i class="fas fa-download"></i> İndir</a>
+            </div>
+          </div>
+        </div>
+        <div class="catalog-preview-card fade-in">
+          <div class="catalog-preview-icon">
+            <i class="fas fa-file-pdf"></i>
+          </div>
+          <div class="catalog-preview-info">
+            <h4>Fischer Ankraj Sistemleri</h4>
+            <p>Fischer ankraj ve sabitleme sistemleri kataloğu</p>
+            <div class="catalog-preview-actions">
+              <a href="katalog/Fischer Ankraj Sistemleri Kataloğu 2023.pdf" target="_blank" class="cpv"><i class="fas fa-eye"></i> İncele</a>
+              <a href="katalog/Fischer Ankraj Sistemleri Kataloğu 2023.pdf" download class="cpd"><i class="fas fa-download"></i> İndir</a>
+            </div>
+          </div>
+        </div>
+        <div class="catalog-preview-card fade-in">
+          <div class="catalog-preview-icon">
+            <i class="fas fa-file-pdf"></i>
+          </div>
+          <div class="catalog-preview-info">
+            <h4>Bosch Mekanik El Aletleri</h4>
+            <p>Profesyonel mekanik el aletleri kataloğu</p>
+            <div class="catalog-preview-actions">
+              <a href="katalog/Bosch Mekanik El Aletleri.pdf" target="_blank" class="cpv"><i class="fas fa-eye"></i> İncele</a>
+              <a href="katalog/Bosch Mekanik El Aletleri.pdf" download class="cpd"><i class="fas fa-download"></i> İndir</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;">
+        <a href="katalog.html" class="btn-primary">Tüm Kataloglar <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
   <!-- İLETİŞİM -->
   <section class="section contact-section" id="iletisim">
     <div class="container">
@@ -288,6 +344,7 @@
             <li><a href="markalar.html">Markalar</a></li>
             <li><a href="fischer.html">Fischer Ürünleri</a></li>
             <li><a href="bosch.html">Bosch Ürünleri</a></li>
+            <li><a href="katalog.html">Kataloglar</a></li>
             <li><a href="#iletisim">İletişim</a></li>
           </ul>
         </div>
@@ -348,10 +405,28 @@
       menuToggle.classList.toggle('active');
       navLinks.classList.toggle('active');
     });
+
+    // Mobile dropdown toggle
+    const dropdownParent = document.querySelector('.nav-links > li > a + .dropdown-menu')?.parentElement;
+    if (dropdownParent) {
+      const dropdownToggle = dropdownParent.querySelector(':scope > a');
+      dropdownToggle.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          dropdownParent.classList.toggle('dropdown-open');
+        }
+      });
+    }
+
+    // Close menu on link click (except dropdown toggle)
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        menuToggle.classList.remove('active');
-        navLinks.classList.remove('active');
+        const isDropdownToggle = link.nextElementSibling?.classList.contains('dropdown-menu');
+        if (!isDropdownToggle || window.innerWidth > 768) {
+          menuToggle.classList.remove('active');
+          navLinks.classList.remove('active');
+          if (dropdownParent) dropdownParent.classList.remove('dropdown-open');
+        }
       });
     });
 

@@ -46,6 +46,7 @@
             <a href="bosch.html" class="active"><i class="fas fa-tools"></i> Bosch Ürünleri</a>
           </div>
         </li>
+        <li><a href="katalog.html">Katalog</a></li>
         <li><a href="index.html#iletisim">İletişim</a></li>
       </ul>
       <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
@@ -113,7 +114,25 @@
   <script>
     const menuToggle=document.getElementById('menuToggle'),navLinks=document.getElementById('navLinks');
     menuToggle.addEventListener('click',()=>{menuToggle.classList.toggle('active');navLinks.classList.toggle('active');});
-    navLinks.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>{menuToggle.classList.remove('active');navLinks.classList.remove('active');}));
+
+    // Mobile dropdown toggle
+    const dropdownParent = document.querySelector('.nav-links > li > a + .dropdown-menu')?.parentElement;
+    if (dropdownParent) {
+      const dropdownToggle = dropdownParent.querySelector(':scope > a');
+      dropdownToggle.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) { e.preventDefault(); dropdownParent.classList.toggle('dropdown-open'); }
+      });
+    }
+
+    navLinks.querySelectorAll('a').forEach(l => {
+      l.addEventListener('click', () => {
+        const isDropdownToggle = l.nextElementSibling?.classList.contains('dropdown-menu');
+        if (!isDropdownToggle || window.innerWidth > 768) {
+          menuToggle.classList.remove('active'); navLinks.classList.remove('active');
+          if (dropdownParent) dropdownParent.classList.remove('dropdown-open');
+        }
+      });
+    });
     const scrollTopBtn=document.getElementById('scrollTop');
     window.addEventListener('scroll',()=>scrollTopBtn.classList.toggle('visible',window.scrollY>400));
     scrollTopBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));

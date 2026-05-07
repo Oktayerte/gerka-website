@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GERKA - Ürün Katalogları. Bosch, Fischer, Bossong ve TEK Boya fiyat listeleri ve ürün katalogları.">
+  <title>Kataloglar | GERKA</title>
+  <link rel="icon" href="img/gerka_logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="img/gerka_logo.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>
+    if (history.scrollRestoration) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  </script>
+</head>
+<body>
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-content">
+      <img src="img/gerka_logo.png" alt="Gerka Logo" class="preloader-logo">
+      <div class="preloader-text">Yükleniyor...</div>
+      <div class="preloader-spinner"></div>
+    </div>
+  </div>
+  <script>
+    if (sessionStorage.getItem('skipPreloader') === 'true') {
+      document.getElementById('preloader').style.display = 'none';
+      sessionStorage.removeItem('skipPreloader');
+    }
+  </script>
+
+  <!-- NAVBAR -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-logo"><img src="img/gerka_logo.png" alt="Gerka Logo"></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Anasayfa</a></li>
+        <li><a href="index.html#hakkimizda">Hakkımızda</a></li>
+        <li><a href="markalar.html">Markalar</a></li>
+        <li>
+          <a href="#">Ürünler <i class="fas fa-chevron-down" style="font-size:0.7rem;margin-left:4px"></i></a>
+          <div class="dropdown-menu">
+            <a href="fischer.html"><i class="fas fa-anchor"></i> Fischer Ürünleri</a>
+            <a href="bosch.html"><i class="fas fa-tools"></i> Bosch Ürünleri</a>
+          </div>
+        </li>
+        <li><a href="katalog.html" class="active">Katalog</a></li>
+        <li><a href="index.html#iletisim">İletişim</a></li>
+      </ul>
+      <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Ürün <span>Katalogları</span></h1>
+      <p>Markalarımızın güncel fiyat listeleri ve ürün kataloglarını inceleyin ve indirin</p>
+    </div>
+  </section>
+
+  <!-- CATALOG SECTION -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Güncel <span>Kataloglar</span></h2>
+        <p>PDF formatındaki kataloglarımızı çevrimiçi inceleyebilir veya cihazınıza indirebilirsiniz</p>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="catalog-grid">
+
+        <!-- Katalog 1 -->
+        <div class="catalog-card fade-in">
+          <div class="catalog-card-icon">
+            <i class="fas fa-file-pdf"></i>
+          </div>
+          <div class="catalog-card-badge">2026</div>
+          <div class="catalog-card-body">
+            <div class="catalog-card-brand">
+              <img src="img/markalar/bosch.png" alt="Bosch" class="catalog-brand-logo">
+            </div>
+            <h3>Bosch Fiyat Listesi</h3>
+            <p>2026 yılı güncel Bosch profesyonel ürün fiyat listesi</p>
+            <div class="catalog-card-meta">
+              <span><i class="fas fa-file"></i> PDF</span>
+              <span><i class="fas fa-database"></i> 96 MB</span>
+            </div>
+          </div>
+          <div class="catalog-card-actions">
+            <a href="katalog/2026 Bosch Fiyat Listesi.pdf" target="_blank" class="catalog-btn catalog-btn-view">
+              <i class="fas fa-eye"></i> İncele
+            </a>
+            <a href="katalog/2026 Bosch Fiyat Listesi.pdf" download class="catalog-btn catalog-btn-download">
+              <i class="fas fa-download"></i> İndir
+            </a>
+          </div>
+        </div>
+
+        <!-- Katalog 2 -->
+        <div class="catalog-card fade-in">
+          <div class="catalog-card-icon">
+            <i class="fas fa-file-pdf"></i>
+          </div>
+          <div class="catalog-card-badge">2026</div>
+          <div class="catalog-card-body">
+            <div class="catalog-card-brand">
+              <img src="img/markalar/bosch.png" alt="Bosch" class="catalog-brand-logo">
+            </div>
+            <h3>Bosch Mekanik El Aletleri</h3>
+            <p>Bosch profesyonel mekanik el aletleri ürün kataloğu</p>
+            <div class="catalog-card-meta">
+              <span><i class="fas fa-file"></i> PDF</span>
+              <span><i class="fas fa-database"></i> 19 MB</span>
+            </div>
+          </div>
+          <div class="catalog-card-actions">
+            <a href="katalog/Bosch Mekanik El Aletleri.pdf" target="_blank" class="catalog-btn catalog-btn-view">
+              <i class="fas fa-eye"></i> İncele
+            </a>
+            <a href="katalog/Bosch Mekanik El Aletleri.pdf" download class="catalog-btn catalog-btn-download">
+              <i class="fas fa-download"></i> İndir
+            </a>
+          </div>
+        </div>
+
+        <!-- Katalog 3 -->
+        <div class="catalog-card fade-in">
+          <div class="catalog-card-icon">
+            <i class="fas fa-file-pdf"></i>
+          </div>
+          <div class="catalog-card-badge">2023</div>
+          <div class="catalog-card-body">
+            <div class="catalog-card-brand">
+              <img src="img/markalar/Fischer.png" alt="Fischer" class="catalog-brand-logo">
+            </div>
+            <h3>Fischer Ankraj Sistemleri</h3>
+            <p>Fischer ankraj ve sabitleme sistemleri ürün kataloğu 2023</p>
+            <div class="catalog-card-meta">
+              <span><i class="fas fa-file"></i> PDF</span>
+              <span><i class="fas fa-database"></i> 40 MB</span>
+            </div>
+          </div>
+          <div class="catalog-card-actions">
+            <a href="katalog/Fischer Ankraj Sistemleri Kataloğu 2023.pdf" target="_blank" class="catalog-btn catalog-btn-view">
+              <i class="fas fa-eye"></i> İncele
+            </a>
+            <a href="katalog/Fischer Ankraj Sistemleri Kataloğu 2023.pdf" download class="catalog-btn catalog-btn-download">
+              <i class="fas fa-download"></i> İndir
+            </a>
+          </div>
+        </div>
+
+        <!-- Katalog 4 -->
+        <div class="catalog-card fade-in">
+          <div class="catalog-card-icon">
+            <i class="fas fa-file-pdf"></i>
+          </div>
+          <div class="catalog-card-badge">Fischer</div>
+          <div class="catalog-card-body">
+            <div class="catalog-card-brand">
+              <img src="img/markalar/Fischer.png" alt="Fischer" class="catalog-brand-logo">
+            </div>
+            <h3>FGC Çivi Çakma Tabancası</h3>
+            <p>Fischer FGC çivi çakma tabancası ürün bilgileri ve teknik detaylar</p>
+            <div class="catalog-card-meta">
+              <span><i class="fas fa-file"></i> PDF</span>
+              <span><i class="fas fa-database"></i> 2 MB</span>
+            </div>
+          </div>
+          <div class="catalog-card-actions">
+            <a href="katalog/FGC Çivi Çakma Tabancası Fischer.pdf" target="_blank" class="catalog-btn catalog-btn-view">
+              <i class="fas fa-eye"></i> İncele
+            </a>
+            <a href="katalog/FGC Çivi Çakma Tabancası Fischer.pdf" download class="catalog-btn catalog-btn-download">
+              <i class="fas fa-download"></i> İndir
+            </a>
+          </div>
+        </div>
+
+        <!-- Katalog 5 -->
+        <div class="catalog-card fade-in">
+          <div class="catalog-card-icon">
+            <i class="fas fa-file-pdf"></i>
+          </div>
+          <div class="catalog-card-badge">Sismik</div>
+          <div class="catalog-card-body">
+            <div class="catalog-card-brand">
+              <i class="fas fa-flask" style="font-size: 2rem; color: var(--primary);"></i>
+            </div>
+            <h3>BOSSONG BCR V PLUS Kimyasal Dübel</h3>
+            <p>BOSSONG sismik kimyasal dübel belgeleri ve teknik dökümanlar</p>
+            <div class="catalog-card-meta">
+              <span><i class="fas fa-file"></i> PDF</span>
+              <span><i class="fas fa-database"></i> 16 MB</span>
+            </div>
+          </div>
+          <div class="catalog-card-actions">
+            <a href="katalog/BOSSONG – BCR V PLUS (SİSMİK) Kimyasal Dübel Belgeleri.pdf" target="_blank" class="catalog-btn catalog-btn-view">
+              <i class="fas fa-eye"></i> İncele
+            </a>
+            <a href="katalog/BOSSONG – BCR V PLUS (SİSMİK) Kimyasal Dübel Belgeleri.pdf" download class="catalog-btn catalog-btn-download">
+              <i class="fas fa-download"></i> İndir
+            </a>
+          </div>
+        </div>
+
+        <!-- Katalog 6 -->
+        <div class="catalog-card fade-in">
+          <div class="catalog-card-icon">
+            <i class="fas fa-file-pdf"></i>
+          </div>
+          <div class="catalog-card-badge">2026</div>
+          <div class="catalog-card-body">
+            <div class="catalog-card-brand">
+              <i class="fas fa-paint-roller" style="font-size: 2rem; color: var(--primary);"></i>
+            </div>
+            <h3>TEK Boya Fiyat Listesi</h3>
+            <p>2026 yılı güncel TEK Boya ürünleri fiyat listesi</p>
+            <div class="catalog-card-meta">
+              <span><i class="fas fa-file"></i> PDF</span>
+              <span><i class="fas fa-database"></i> 13 MB</span>
+            </div>
+          </div>
+          <div class="catalog-card-actions">
+            <a href="katalog/2026 TEK BOYA LİSTESİ.pdf" target="_blank" class="catalog-btn catalog-btn-view">
+              <i class="fas fa-eye"></i> İncele
+            </a>
+            <a href="katalog/2026 TEK BOYA LİSTESİ.pdf" download class="catalog-btn catalog-btn-download">
+              <i class="fas fa-download"></i> İndir
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="catalog-cta fade-in">
+        <div class="catalog-cta-inner">
+          <i class="fab fa-whatsapp"></i>
+          <div>
+            <h3>Aradığınız kataloğu bulamadınız mı?</h3>
+            <p>Bize WhatsApp üzerinden ulaşın, ihtiyacınız olan tüm katalog ve fiyat listelerini sizinle paylaşalım.</p>
+          </div>
+          <a href="https://wa.me/905318853319?text=Merhaba,%20katalog%20hakkında%20bilgi%20almak%20istiyorum" target="_blank" class="btn-primary">
+            <i class="fab fa-whatsapp"></i> Bize Yazın
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 GERKA. Tüm hakları saklıdır.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Chat Widget -->
+  <div class="wa-chat-popup" id="waChatPopup">
+    <div class="wa-chat-header">
+      <img src="img/gerka_logo.png" alt="Gerka" class="wa-avatar">
+      <div class="wa-chat-header-info">
+        <h4>Gerka Bağlantı Sistemleri</h4>
+        <p>Genellikle hızlı yanıt verir</p>
+      </div>
+      <button class="wa-chat-close" id="waChatClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="wa-chat-body">
+      <div class="wa-chat-bubble">
+        Merhaba! 👋 Gerka Bağlantı Sistemleri'ne hoş geldiniz. Size nasıl yardımcı olabiliriz?
+        <span class="wa-chat-time">Şimdi</span>
+      </div>
+    </div>
+    <div class="wa-chat-footer">
+      <input type="text" class="wa-chat-input" id="waChatInput" placeholder="Mesajınızı yazın...">
+      <button class="wa-chat-send" id="waChatSend"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+  <button class="whatsapp-btn" id="waToggle" title="WhatsApp ile İletişim">
+    <i class="fab fa-whatsapp"></i>
+  </button>
+  <button class="scroll-top" id="scrollTop"><i class="fas fa-chevron-up"></i></button>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle'), navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => { menuToggle.classList.toggle('active'); navLinks.classList.toggle('active'); });
+
+    // Mobile dropdown toggle
+    const dropdownParent = document.querySelector('.nav-links > li > a + .dropdown-menu')?.parentElement;
+    if (dropdownParent) {
+      const dropdownToggle = dropdownParent.querySelector(':scope > a');
+      dropdownToggle.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) { e.preventDefault(); dropdownParent.classList.toggle('dropdown-open'); }
+      });
+    }
+
+    navLinks.querySelectorAll('a').forEach(l => {
+      l.addEventListener('click', () => {
+        const isDropdownToggle = l.nextElementSibling?.classList.contains('dropdown-menu');
+        if (!isDropdownToggle || window.innerWidth > 768) {
+          menuToggle.classList.remove('active'); navLinks.classList.remove('active');
+          if (dropdownParent) dropdownParent.classList.remove('dropdown-open');
+        }
+      });
+    });
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => scrollTopBtn.classList.toggle('visible', window.scrollY > 400));
+    scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    const observer = new IntersectionObserver(e => e.forEach(x => { if (x.isIntersecting) x.target.classList.add('visible') }), { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Preloader
+    if (document.getElementById('preloader').style.display !== 'none') {
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const preloader = document.getElementById('preloader');
+          if (preloader) {
+            preloader.classList.add('hidden');
+            setTimeout(() => preloader.style.display = 'none', 500);
+          }
+        }, 1500);
+      });
+    }
+
+    // Skip preloader on internal navigation
+    document.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        const href = link.getAttribute('href');
+        if (link.hostname === window.location.hostname && href && !href.startsWith('#') && !href.startsWith('tel:') && !href.startsWith('mailto:')) {
+          sessionStorage.setItem('skipPreloader', 'true');
+        }
+      });
+    });
+
+    // WhatsApp Chat Widget
+    const waToggle = document.getElementById('waToggle');
+    const waChatPopup = document.getElementById('waChatPopup');
+    const waChatClose = document.getElementById('waChatClose');
+    const waChatInput = document.getElementById('waChatInput');
+    const waChatSend = document.getElementById('waChatSend');
+
+    waToggle.addEventListener('click', () => {
+      waChatPopup.classList.toggle('active');
+    });
+    waChatClose.addEventListener('click', () => {
+      waChatPopup.classList.remove('active');
+    });
+
+    function sendWhatsApp() {
+      const msg = waChatInput.value.trim();
+      const url = msg
+        ? `https://wa.me/905318853319?text=${encodeURIComponent(msg)}`
+        : 'https://wa.me/905318853319';
+      window.open(url, '_blank');
+    }
+    waChatSend.addEventListener('click', sendWhatsApp);
+    waChatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendWhatsApp();
+    });
+  </script>
+</body>
+</html>
