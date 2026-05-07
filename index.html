@@ -44,11 +44,32 @@
         <li><a href="index.html" class="active">Anasayfa</a></li>
         <li><a href="#hakkimizda">Hakkımızda</a></li>
         <li><a href="markalar.html">Markalar</a></li>
-        <li>
-          <a href="#urunler">Ürünler <i class="fas fa-chevron-down" style="font-size:0.7rem;margin-left:4px"></i></a>
-          <div class="dropdown-menu">
-            <a href="fischer.html"><i class="fas fa-anchor"></i> Fischer Ürünleri</a>
-            <a href="bosch.html"><i class="fas fa-tools"></i> Bosch Ürünleri</a>
+        <li class="has-dropdown">
+          <a href="#">Ürünler <i class="fas fa-chevron-down" style="font-size:0.7rem;margin-left:4px"></i></a>
+          <div class="dropdown-menu mega-dropdown">
+            <div class="mega-category">
+              <a href="#" class="mega-title"><i class="fas fa-hard-hat"></i> İnşaat Malzemeleri <i class="fas fa-chevron-right mega-arrow"></i></a>
+              <div class="mega-sub">
+                <a href="#">Çiviler</a>
+                <a href="#">Tel Çeşitleri</a>
+                <a href="#">Paspay Çeşitleri</a>
+              </div>
+            </div>
+            <div class="mega-category">
+              <a href="#" class="mega-title"><i class="fas fa-shield-alt"></i> Kişisel Koruyucu <i class="fas fa-chevron-right mega-arrow"></i></a>
+              <div class="mega-sub">
+                <div class="mega-category">
+                  <a href="#" class="mega-title"><i class="fas fa-shoe-prints"></i> Ayak Koruyucu <i class="fas fa-chevron-right mega-arrow"></i></a>
+                  <div class="mega-sub">
+                    <a href="#">Çizme</a>
+                    <a href="#">Ayakkabı</a>
+                  </div>
+                </div>
+                <a href="#">Yüz Koruyucu</a>
+                <a href="#">El Koruyucu</a>
+                <a href="#">İş Kıyafetleri</a>
+              </div>
+            </div>
           </div>
         </li>
         <li><a href="katalog.html">Katalog</a></li>
@@ -424,7 +445,7 @@
     });
 
     // Mobile dropdown toggle
-    const dropdownParent = document.querySelector('.nav-links > li > a + .dropdown-menu')?.parentElement;
+    const dropdownParent = document.querySelector('.nav-links > li.has-dropdown');
     if (dropdownParent) {
       const dropdownToggle = dropdownParent.querySelector(':scope > a');
       dropdownToggle.addEventListener('click', (e) => {
@@ -435,14 +456,31 @@
       });
     }
 
-    // Close menu on link click (except dropdown toggle)
+    // Mobile mega menu accordion
+    document.querySelectorAll('.mega-title').forEach(title => {
+      title.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          e.stopPropagation();
+          const cat = title.closest('.mega-category');
+          // Close siblings
+          cat.parentElement.querySelectorAll(':scope > .mega-category').forEach(sib => {
+            if (sib !== cat) sib.classList.remove('dropdown-open');
+          });
+          cat.classList.toggle('dropdown-open');
+        }
+      });
+    });
+
+    // Close menu on leaf link click
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
+        if (link.classList.contains('mega-title')) return;
         const isDropdownToggle = link.nextElementSibling?.classList.contains('dropdown-menu');
         if (!isDropdownToggle || window.innerWidth > 768) {
           menuToggle.classList.remove('active');
           navLinks.classList.remove('active');
-          if (dropdownParent) dropdownParent.classList.remove('dropdown-open');
+          document.querySelectorAll('.dropdown-open').forEach(el => el.classList.remove('dropdown-open'));
         }
       });
     });
