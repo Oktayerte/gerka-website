@@ -266,6 +266,69 @@
     </div>
   </section>
 
+  <!-- NEDEN BİZİ TERCİH ETMELİSİNİZ -->
+  <section class="section why-us-section" id="neden-biz">
+    <div class="container">
+      <div class="section-header slide-up">
+        <h2>Neden <span>Bizi Tercih</span> Etmelisiniz?</h2>
+        <p>Sektörde fark yaratan avantajlarımızla her zaman yanınızdayız</p>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="why-us-grid">
+        <div class="why-us-card fade-in">
+          <div class="why-us-icon">
+            <i class="fas fa-history"></i>
+          </div>
+          <div class="why-us-number">25+</div>
+          <h3>Yıllık Deneyim</h3>
+          <p>1999'dan bu yana sektörde biriktirdiğimiz köklü tecrübe ile projelerinize güç katıyoruz.</p>
+        </div>
+
+        <div class="why-us-card fade-in">
+          <div class="why-us-icon">
+            <i class="fas fa-award"></i>
+          </div>
+          <div class="why-us-number">17+</div>
+          <h3>Dünya Markası</h3>
+          <p>Fischer, Bosch, Hilti gibi dünyaca ünlü markaların yetkili distribütörü olarak kaliteyi sunuyoruz.</p>
+        </div>
+
+        <div class="why-us-card fade-in">
+          <div class="why-us-icon">
+            <i class="fas fa-shipping-fast"></i>
+          </div>
+          <div class="why-us-number">24s</div>
+          <h3>Hızlı Teslimat</h3>
+          <p>Adrese teslim hızlı lojistik hizmetimizle, siparişlerinizi en kısa sürede ulaştırıyoruz.</p>
+        </div>
+      </div>
+
+      <!-- Stats Bar -->
+      <div class="why-us-stats">
+        <div class="why-us-stat fade-in">
+          <div class="why-us-stat-number" data-target="5000">0</div>
+          <div class="why-us-stat-label">Mutlu Müşteri</div>
+        </div>
+        <div class="why-us-stat-divider"></div>
+        <div class="why-us-stat fade-in">
+          <div class="why-us-stat-number" data-target="10000">0</div>
+          <div class="why-us-stat-label">Teslim Edilen Sipariş</div>
+        </div>
+        <div class="why-us-stat-divider"></div>
+        <div class="why-us-stat fade-in">
+          <div class="why-us-stat-number" data-target="2000">0</div>
+          <div class="why-us-stat-label">Ürün Çeşidi</div>
+        </div>
+        <div class="why-us-stat-divider"></div>
+        <div class="why-us-stat fade-in">
+          <div class="why-us-stat-number" data-target="17">0</div>
+          <div class="why-us-stat-label">Marka Partneri</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- KATALOGLAR -->
   <section class="section brands-section" id="kataloglar">
     <div class="container">
@@ -624,6 +687,39 @@
     waChatInput.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') sendWhatsApp();
     });
+
+    // Counter Animation for Why Us Stats
+    const statNumbers = document.querySelectorAll('.why-us-stat-number');
+    let statsAnimated = false;
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !statsAnimated) {
+          statsAnimated = true;
+          statNumbers.forEach(num => {
+            const target = parseInt(num.getAttribute('data-target'));
+            const duration = 2000;
+            const startTime = performance.now();
+            
+            function updateCounter(currentTime) {
+              const elapsed = currentTime - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+              const easeOut = 1 - Math.pow(1 - progress, 3);
+              const current = Math.floor(easeOut * target);
+              num.textContent = current.toLocaleString('tr-TR') + '+';
+              if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+              } else {
+                num.textContent = target.toLocaleString('tr-TR') + '+';
+              }
+            }
+            requestAnimationFrame(updateCounter);
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+    
+    const statsSection = document.querySelector('.why-us-stats');
+    if (statsSection) statsObserver.observe(statsSection);
   </script>
 </body>
 </html>
