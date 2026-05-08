@@ -19,6 +19,9 @@
 </head>
 <body>
 
+  <!-- Page Transition Overlay -->
+  <div class="page-transition" id="pageTransition"></div>
+
   <!-- Preloader -->
   <div class="preloader" id="preloader">
     <div class="preloader-content">
@@ -131,16 +134,16 @@
   <!-- HAKKIMIZDA -->
   <section class="section" id="hakkimizda">
     <div class="container">
-      <div class="section-header fade-in">
+      <div class="section-header slide-up">
         <h2>Gerka <span>Hakkında</span></h2>
         <p>Sektörde güvenin ve kalitenin adresi</p>
         <div class="section-line"></div>
       </div>
       <div class="about-grid">
-        <div class="about-img fade-in">
+        <div class="about-img slide-left">
           <img src="img/anasayfa/anasayfa_1.png" alt="Gerka Hakkında">
         </div>
-        <div class="about-text fade-in">
+        <div class="about-text slide-right">
           <h3>Kalite ve <span>Güven</span></h3>
           <p>1999 yılından beri sektörde biriktirdiğimiz köklü deneyimlerimizle, 2008 yılında İstanbul'da kurulduk. Firma olarak, inşaat, endüstri yapı ve imalat sektörlerinde, müşterilerimize adrese teslim hızlı hizmet sunarak, kendimizi bir tedarik partneri olarak görüyoruz.</p>
           <p>Hızlı teslimatlarımız, sektördeki yeniliklere olan bağlılığımız ve deneyimli kadromuzla, müşterilerimize güvenilir ve kapsamlı çözümler sunuyoruz. Sürdürülebilirliği ön planda tutarak, müşterilerimizin ihtiyaçlarına en uygun çözümleri sunmayı amaçlıyoruz.</p>
@@ -167,7 +170,7 @@
   <!-- MARKALAR -->
   <section class="section brands-section" id="markalar">
     <div class="container">
-      <div class="section-header fade-in">
+      <div class="section-header slide-up">
         <h2>Çalıştığımız <span>Markalar</span></h2>
         <p>Dünyaca ünlü markaların yetkili distribütörüyüz</p>
         <div class="section-line"></div>
@@ -221,7 +224,7 @@
   <!-- ÇALIŞTIĞIMIZ ALANLAR -->
   <section class="section" id="alanlar">
     <div class="container">
-      <div class="section-header fade-in">
+      <div class="section-header slide-up">
         <h2>Çalıştığımız <span>Alanlar</span></h2>
         <p>Farklı sektörlere profesyonel çözümler sunuyoruz</p>
         <div class="section-line"></div>
@@ -266,7 +269,7 @@
   <!-- KATALOGLAR -->
   <section class="section brands-section" id="kataloglar">
     <div class="container">
-      <div class="section-header fade-in">
+      <div class="section-header slide-up">
         <h2>Ürün <span>Katalogları</span></h2>
         <p>Güncel fiyat listeleri ve ürün kataloglarını inceleyin</p>
         <div class="section-line"></div>
@@ -321,7 +324,7 @@
   <!-- İLETİŞİM -->
   <section class="section contact-section" id="iletisim">
     <div class="container">
-      <div class="section-header fade-in">
+      <div class="section-header slide-up">
         <h2>Bizimle <span>İletişime</span> Geçin</h2>
         <p>Sorularınız için bize ulaşabilirsiniz</p>
         <div class="section-line"></div>
@@ -519,6 +522,27 @@
     }, { threshold: 0.1 });
     fadeEls.forEach(el => observer.observe(el));
 
+    // Slide-up animation for section headers
+    document.querySelectorAll('.slide-up, .slide-left, .slide-right').forEach(el => observer.observe(el));
+
+    // Parallax effect on hero images
+    const heroSection = document.getElementById('hero');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.pageYOffset;
+      if (scrollY < window.innerHeight) {
+        const heroSlides = document.querySelectorAll('.hero-slide img');
+        heroSlides.forEach(img => {
+          img.style.transform = `translateY(${scrollY * 0.4}px) scale(1.1)`;
+        });
+        // Fade out hero content on scroll
+        const heroContent = document.querySelector('.hero-content');
+        if (heroContent) {
+          heroContent.style.opacity = 1 - (scrollY / (window.innerHeight * 0.7));
+          heroContent.style.transform = `translateY(${scrollY * 0.3}px)`;
+        }
+      }
+    });
+
     // ScrollSpy for Navbar
     const sections = document.querySelectorAll('section[id], .hero[id]');
     const navItems = document.querySelectorAll('.nav-links > li > a');
@@ -561,12 +585,16 @@
       });
     }
 
-    // Skip preloader on internal navigation
+    // Smooth page transitions
+    const pageTransition = document.getElementById('pageTransition');
     document.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
+      link.addEventListener('click', (e) => {
         const href = link.getAttribute('href');
-        if (link.hostname === window.location.hostname && href && !href.startsWith('#') && !href.startsWith('tel:') && !href.startsWith('mailto:')) {
+        if (link.hostname === window.location.hostname && href && !href.startsWith('#') && !href.startsWith('tel:') && !href.startsWith('mailto:') && !link.hasAttribute('download') && link.target !== '_blank') {
+          e.preventDefault();
           sessionStorage.setItem('skipPreloader', 'true');
+          pageTransition.classList.add('active');
+          setTimeout(() => { window.location.href = href; }, 400);
         }
       });
     });

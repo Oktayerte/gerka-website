@@ -17,6 +17,10 @@
   </script>
 </head>
 <body>
+
+  <!-- Page Transition Overlay -->
+  <div class="page-transition" id="pageTransition"></div>
+
   <!-- Preloader -->
   <div class="preloader" id="preloader">
     <div class="preloader-content">
@@ -383,12 +387,16 @@
       });
     }
 
-    // Skip preloader on internal navigation
+    // Smooth page transitions
+    const pageTransition = document.getElementById('pageTransition');
     document.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
+      link.addEventListener('click', (e) => {
         const href = link.getAttribute('href');
-        if (link.hostname === window.location.hostname && href && !href.startsWith('#') && !href.startsWith('tel:') && !href.startsWith('mailto:')) {
+        if (link.hostname === window.location.hostname && href && !href.startsWith('#') && !href.startsWith('tel:') && !href.startsWith('mailto:') && !link.hasAttribute('download') && link.target !== '_blank') {
+          e.preventDefault();
           sessionStorage.setItem('skipPreloader', 'true');
+          pageTransition.classList.add('active');
+          setTimeout(() => { window.location.href = href; }, 400);
         }
       });
     });
